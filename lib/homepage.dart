@@ -22,9 +22,11 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: screenHeight / 3,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(
+                      left: 20, top: 30, right: 20, bottom: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -67,16 +69,16 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             children: [
               homeCards('images/math.jpg', 'গণিত', screenWidth, screenHeight),
-              homeCards('images/children.jpg', 'ফুলের নাম', screenWidth,
-                  screenHeight),
+              homeCards(
+                  'images/flower.jpg', 'ফুলের নাম', screenWidth, screenHeight),
             ],
           ),
           Row(
             children: [
               homeCards(
-                  'images/children.jpg', 'ফলের নাম', screenWidth, screenHeight),
+                  'images/fruits.jpg', 'ফলের নাম', screenWidth, screenHeight),
               homeCards(
-                  'images/children.jpg', 'পশুর নাম', screenWidth, screenHeight),
+                  'images/animal.jpg', 'পশুর নাম', screenWidth, screenHeight),
             ],
           ),
         ],
@@ -106,14 +108,18 @@ homeCards(String img, String word, double wdth, double hght) {
     child: Column(
       children: [
         Container(
-          margin: EdgeInsets.all(10),
+          height: hght / 7.7,
+          // height: ((hght - hght / 3) / 3) - 80,
+          margin: const EdgeInsets.all(10),
           child: Image.asset(
             img,
             height: hght / 9.9,
-            fit: BoxFit.fitWidth,
           ),
         ),
-        Text(word),
+        Text(
+          word,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ],
     ),
   );
