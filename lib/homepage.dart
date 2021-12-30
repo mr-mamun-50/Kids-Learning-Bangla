@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kids_learning/grid_view.dart';
+import 'package:kids_learning/bangla.dart';
+import 'package:kids_learning/english.dart';
+import 'package:kids_learning/math.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -25,8 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.only(
-                      left: 20, top: 30, right: 20, bottom: 20),
+                  margin: const EdgeInsets.all(20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -60,25 +61,85 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Row(
             children: [
-              homeCards(
-                  'images/bangla.jpg', 'বাংলা', screenWidth, screenHeight),
-              homeCards(
-                  'images/english.jpg', 'ইংরেজি', screenWidth, screenHeight),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BanglaAlpha()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards(
+                    'images/bangla.jpg', 'বাংলা', screenWidth, screenHeight),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EnglishAlpha()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards(
+                    'images/english.jpg', 'ইংরেজি', screenWidth, screenHeight),
+              ),
             ],
           ),
           Row(
             children: [
-              homeCards('images/math.jpg', 'গণিত', screenWidth, screenHeight),
-              homeCards(
-                  'images/flower.jpg', 'ফুলের নাম', screenWidth, screenHeight),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MathNumber()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards(
+                    'images/math.jpg', 'গণিত', screenWidth, screenHeight),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EnglishAlpha()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards('images/flower.jpg', 'ফুলের নাম', screenWidth,
+                    screenHeight),
+              ),
             ],
           ),
           Row(
             children: [
-              homeCards(
-                  'images/fruits.jpg', 'ফলের নাম', screenWidth, screenHeight),
-              homeCards(
-                  'images/animal.jpg', 'পশুর নাম', screenWidth, screenHeight),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EnglishAlpha()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards(
+                    'images/fruits.jpg', 'ফলের নাম', screenWidth, screenHeight),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EnglishAlpha()),
+                  );
+                  setState(() {});
+                },
+                child: homeCards(
+                    'images/animal.jpg', 'পশুর নাম', screenWidth, screenHeight),
+              ),
             ],
           ),
         ],
@@ -88,11 +149,13 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 homeCards(String img, String word, double wdth, double hght) {
+  double H = hght - (hght / 3);
+
   return Container(
-    padding: const EdgeInsets.all(10),
+    // padding: const EdgeInsets.all(10),
     margin: const EdgeInsets.all(10),
     width: (wdth / 2) - 20,
-    height: ((hght - hght / 3) / 3) - 20,
+    height: (H / 3) - 20,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(10),
@@ -107,19 +170,27 @@ homeCards(String img, String word, double wdth, double hght) {
     ),
     child: Column(
       children: [
-        Container(
-          height: hght / 7.7,
-          // height: ((hght - hght / 3) / 3) - 80,
-          margin: const EdgeInsets.all(10),
-          child: Image.asset(
-            img,
-            height: hght / 9.9,
+        SizedBox(
+          height: (H / 3) - 50,
+          width: (wdth / 2) - 20,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            child: Image.asset(
+              img,
+              fit: BoxFit.fill,
+            ),
           ),
         ),
-        Text(
-          word,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
+        Container(
+          padding: const EdgeInsets.all(5),
+          child: Text(
+            word,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        )
       ],
     ),
   );

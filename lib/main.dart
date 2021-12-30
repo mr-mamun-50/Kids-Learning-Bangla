@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kids_learning/grid_view.dart';
 import 'package:kids_learning/homepage.dart';
 
 void main() {
