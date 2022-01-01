@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 
-class bVowel extends StatefulWidget {
-  const bVowel({Key? key}) : super(key: key);
+class EngSmall extends StatefulWidget {
+  const EngSmall({Key? key}) : super(key: key);
 
   @override
-  _bVowelState createState() => _bVowelState();
+  _EngSmallState createState() => _EngSmallState();
 }
 
-class _bVowelState extends State<bVowel> {
+class _EngSmallState extends State<EngSmall> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    var bVowel = ['অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ'];
+    var eCptl = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z'
+    ];
 
     return Scaffold(
       backgroundColor: const Color(0Xfff0f7f7),
@@ -28,7 +55,7 @@ class _bVowelState extends State<bVowel> {
             child: Container(
               child: const Center(
                 child: Text(
-                  'স্বরবর্ণ',
+                  'Small Letters',
                   style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -38,7 +65,7 @@ class _bVowelState extends State<bVowel> {
               height: screenHeight / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage('images/banglaWord.jpg'),
+                  image: const AssetImage('images/engLetter.jpg'),
                   fit: BoxFit.fill,
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.7), BlendMode.darken),
@@ -61,14 +88,14 @@ class _bVowelState extends State<bVowel> {
         crossAxisCount: 4,
         // mainAxisSpacing: 5,
         // crossAxisSpacing: 5,
-        children: List<Widget>.generate(11, (index) {
+        children: List<Widget>.generate(26, (index) {
           return GridTile(
             child: Card(
               color: Colors.white,
               child: Container(
                 child: Center(
                   child: Text(
-                    bVowel[index],
+                    eCptl[index],
                     style: const TextStyle(
                       fontSize: 45,
                       color: Colors.black,
@@ -79,7 +106,7 @@ class _bVowelState extends State<bVowel> {
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   image: DecorationImage(
-                    image: AssetImage('images/fFrame3.jpg'),
+                    image: AssetImage('images/fFrame4.jpg'),
                     fit: BoxFit.fill,
                   ),
                 ),

@@ -1,18 +1,61 @@
 import 'package:flutter/material.dart';
 
-class bVowel extends StatefulWidget {
-  const bVowel({Key? key}) : super(key: key);
+class MathNumberCount extends StatefulWidget {
+  const MathNumberCount({Key? key}) : super(key: key);
 
   @override
-  _bVowelState createState() => _bVowelState();
+  _MathNumberCountState createState() => _MathNumberCountState();
 }
 
-class _bVowelState extends State<bVowel> {
+class _MathNumberCountState extends State<MathNumberCount> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    var bVowel = ['অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ'];
+    var nCntN = [
+      '১',
+      '২',
+      '৩',
+      '৪',
+      '৫',
+      '৬',
+      '৭',
+      '৮',
+      '৯',
+      '১০',
+      '১১',
+      '১২',
+      '১৩',
+      '১৪',
+      '১৫',
+      '১৬',
+      '১৭',
+      '১৮',
+      '১৯',
+      '২০'
+    ];
+    var nCntW = [
+      'এক',
+      'দুই',
+      'তিন',
+      'চার',
+      'পাঁচ',
+      'ছয়',
+      'সাত',
+      'আট',
+      'নয়',
+      'দশ',
+      'এগারো',
+      'বারো',
+      'তেরো',
+      'চৌদ্দ',
+      'পনেরো',
+      'ষোলো',
+      'সতেরো',
+      'আঠারো',
+      'উনিশ',
+      'বিশ'
+    ];
 
     return Scaffold(
       backgroundColor: const Color(0Xfff0f7f7),
@@ -28,7 +71,7 @@ class _bVowelState extends State<bVowel> {
             child: Container(
               child: const Center(
                 child: Text(
-                  'স্বরবর্ণ',
+                  'সংখ্যা গণনা',
                   style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -38,7 +81,7 @@ class _bVowelState extends State<bVowel> {
               height: screenHeight / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage('images/banglaWord.jpg'),
+                  image: const AssetImage('images/math4.jpg'),
                   fit: BoxFit.fill,
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.7), BlendMode.darken),
@@ -61,25 +104,38 @@ class _bVowelState extends State<bVowel> {
         crossAxisCount: 4,
         // mainAxisSpacing: 5,
         // crossAxisSpacing: 5,
-        children: List<Widget>.generate(11, (index) {
+        children: List<Widget>.generate(20, (index) {
           return GridTile(
             child: Card(
               color: Colors.white,
               child: Container(
                 child: Center(
-                  child: Text(
-                    bVowel[index],
-                    style: const TextStyle(
-                      fontSize: 45,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        nCntN[index],
+                        style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        nCntW[index],
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   image: DecorationImage(
-                    image: AssetImage('images/fFrame3.jpg'),
+                    image: AssetImage('images/fFrame4.jpg'),
                     fit: BoxFit.fill,
                   ),
                 ),

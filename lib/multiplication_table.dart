@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
-class bVowel extends StatefulWidget {
-  const bVowel({Key? key}) : super(key: key);
+class MultiTable extends StatefulWidget {
+  const MultiTable({Key? key}) : super(key: key);
 
   @override
-  _bVowelState createState() => _bVowelState();
+  _MultiTableState createState() => _MultiTableState();
 }
 
-class _bVowelState extends State<bVowel> {
+class _MultiTableState extends State<MultiTable> {
+  var images = [
+    'images/Miltiplication_table/one.png',
+    'images/Miltiplication_table/two.png',
+  ];
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    var bVowel = ['অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ'];
 
     return Scaffold(
       backgroundColor: const Color(0Xfff0f7f7),
@@ -28,7 +33,7 @@ class _bVowelState extends State<bVowel> {
             child: Container(
               child: const Center(
                 child: Text(
-                  'স্বরবর্ণ',
+                  'গুণের নামতা',
                   style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -38,7 +43,7 @@ class _bVowelState extends State<bVowel> {
               height: screenHeight / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage('images/banglaWord.jpg'),
+                  image: const AssetImage('images/math2.jpg'),
                   fit: BoxFit.fill,
                   colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.7), BlendMode.darken),
@@ -56,37 +61,44 @@ class _bVowelState extends State<bVowel> {
         ),
       ),
       extendBodyBehindAppBar: true,
-      body: GridView.count(
-        // padding: EdgeInsets.all(10),
-        crossAxisCount: 4,
-        // mainAxisSpacing: 5,
-        // crossAxisSpacing: 5,
-        children: List<Widget>.generate(11, (index) {
-          return GridTile(
-            child: Card(
-              color: Colors.white,
-              child: Container(
-                child: Center(
-                  child: Text(
-                    bVowel[index],
-                    style: const TextStyle(
-                      fontSize: 45,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  image: DecorationImage(
-                    image: AssetImage('images/fFrame3.jpg'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
+      body: Container(
+        padding: EdgeInsets.only(top: (screenHeight / 3) + 30),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () {
+                index -= 1;
+                if (index < 0) {
+                  index = images.length - 1;
+                }
+                setState(() {});
+              },
+              child: const Icon(
+                Icons.arrow_left,
+                size: 50,
               ),
             ),
-          );
-        }),
+            Image.asset(
+              images[index],
+              width: screenWidth - 100,
+              height: 300,
+            ),
+            InkWell(
+              onTap: () {
+                index += 1;
+                if (index > images.length - 1) {
+                  index = 0;
+                }
+                setState(() {});
+              },
+              child: const Icon(
+                Icons.arrow_right,
+                size: 50,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

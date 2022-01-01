@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kids_learning/animals_name.dart';
 import 'package:kids_learning/bangla.dart';
 import 'package:kids_learning/english.dart';
+import 'package:kids_learning/flowers_name.dart';
+import 'package:kids_learning/fruits_name.dart';
 import 'package:kids_learning/math.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -105,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EnglishAlpha()),
+                        builder: (context) => const FlowersName()),
                   );
                   setState(() {});
                 },
@@ -120,8 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const EnglishAlpha()),
+                    MaterialPageRoute(builder: (context) => const FruitsName()),
                   );
                   setState(() {});
                 },
@@ -133,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EnglishAlpha()),
+                        builder: (context) => const AnimalsName()),
                   );
                   setState(() {});
                 },
