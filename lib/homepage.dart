@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kids_learning/animals_name.dart';
 import 'package:kids_learning/bangla.dart';
 import 'package:kids_learning/english.dart';
@@ -20,48 +21,107 @@ class _MyHomePageState extends State<MyHomePage> {
     var screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: PreferredSize(
+        // preferredSize: Size.fromHeight((screenHeight / 3) - 30),
+        preferredSize: Size.fromHeight((screenHeight / 3) - 30),
+        child: AppBar(
+          backgroundColor: Colors.teal,
+          flexibleSpace: ClipRRect(
+            child: Container(
+              // height: screenHeight / 3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            'images/home_icon.jpg',
+                            height: 100,
+                            width: 100,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    'আদর্শ লিপি',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  const Text(
+                    'একের ভিতর সব',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/main_bg4.jpg'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            borderRadius: const BorderRadius.only(
+              bottomRight: Radius.circular(50),
+              bottomLeft: Radius.circular(50),
+            ),
+          ),
+          shadowColor: Colors.transparent,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(50),
+              bottomLeft: Radius.circular(50),
+            ),
+          ),
+          actions: [
+            IconButton(
+                onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('About app'),
+                        content: const Text(
+                            'This app is a learning app for kids. \n\nDeveloped by- \nMamunur Rashid Mamun \nStudent of SDMGA'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Clipboard.setData(const ClipboardData(
+                                      text:
+                                          "This app is a learning app for kids. \n\nDeveloped by- \nMamunur Rashid Mamun \nStudent of SDMGA"))
+                                  .then((_) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            'Copied to your clipboard !')));
+                              });
+                            },
+                            child: const Text('Copy info'),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Close'),
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      ),
+                    ),
+                icon: const Icon(Icons.info))
+          ],
+        ),
+      ),
       backgroundColor: const Color(0Xfff0f7f7),
       body: Column(
         children: [
-          SizedBox(
-            height: screenHeight / 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          'images/home_icon.jpg',
-                          height: 100,
-                          width: 100,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Text(
-                  'আদর্শ লিপি',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal),
-                ),
-                const Text(
-                  'একের ভিতর সব',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87),
-                ),
-              ],
-            ),
-          ),
           Row(
             children: [
               InkWell(
